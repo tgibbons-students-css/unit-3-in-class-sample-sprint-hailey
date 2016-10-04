@@ -1,0 +1,75 @@
+            'This is a sample of Visual Basic code that shows the need for the Null object pattern.
+            'This code processes a list of books from Amazon and repeatadly checks if a part of them is Null or Nothing in VB
+            
+            ' Check for errors, stop at first error
+            If listsArray Is Nothing Then
+                Throw New Exception("Server Error - empty response!")
+            End If
+            If Not listsArray(0).Request.Errors Is Nothing Then
+                Throw New Exception(listsArray(0).Request.Errors(0).Message)
+            End If
+            '**********************************************************
+            ' ListsArray
+            '**********************************************************
+            If Not listsArray Is Nothing Then
+                For Each lists As Lists In listsArray
+                    If Not lists Is Nothing Then
+                        '**********************************************************
+                        ' Lists::List
+                        '**********************************************************
+                        Dim listArray As List() = lists.List
+                        If Not listArray Is Nothing Then
+                            For Each list As List In listArray
+                                If Not list Is Nothing Then
+                                    Try
+                                        cur_list = list
+                                        total_pages = list.TotalPages
+                                        '**********************************************************
+                                        ' List::ListItem
+                                        '**********************************************************
+                                        Dim listItemArray As ListItem() = list.ListItem
+                                        If Not listItemArray Is Nothing Then
+                                            If cnn_list.State <> ConnectionState.Open Then
+                                                cnn_list.Open()              'open database connection
+                                            End If
+                                            cmd.Connection = cnn_list
+                                            For Each listItem As ListItem In listItemArray
+                                                If Not listItem Is Nothing Then
+                                                    items_found += 1
+                                                    '**********************************************************
+                                                    ' ListItem::Item
+                                                    '**********************************************************
+
+
+
+                                                    item = listItem.Item
+                                                    If item.ItemAttributes.ProductGroup = "Book" Then
+                                                        If (Not fast) Then
+                                                            add_item_to_db("Sims not searched", item)
+                                                        End If
+                                                        ' Count to see if record is already in database
+                                                        Dim strSQL As String = "SELECT count(*) FROM ListItems where ListID = '" & listid & "' and ASIN = '" & item.ASIN & "'"
+                                                        cmd.CommandText = strSQL
+                                                        Dim count As Integer = cmd.ExecuteScalar()
+                                                        If (count < 1) Then
+                                                            'listitem is not in database, so add it to database
+                                                            Dim strInsert As String = "Insert into ListItems (ListID, ASIN, ScanDate) "
+                                                            strInsert &= "Values ('" & listid & "', '" & item.ASIN & "', '" & Now() & "')"
+                                                            cmd.CommandText = strInsert
+                                                            cmd.ExecuteNonQuery()
+                                                        End If      'DV.count
+                                                    End If  'is Book
+                                                End If      'listItem
+                                            Next        'listItem
+                                            cnn_list.Close()         ' close database connection
+                                        End If    'listItemArray
+                                    Catch ex As Exception
+                                        Log_Error("Scan_list_fast A:" & ex.Message, cur_list.ListName, item.ASIN, "")
+                                        cnn_list.Close()         ' close database connection
+
+                                    End Try
+
+                                End If      'list
+                            Next        'list
+                        End If  'listArray
+      
