@@ -17,6 +17,7 @@ namespace Sermo.UI.Contracts
             "frabjous",
             "bandersnatch"
         };
+        //  Changes for Sprint #2 -- User Story 2 -- Hailey Vold
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {

@@ -38,6 +38,10 @@ namespace Sermo.Data.Mongo
             return messagesCollection.Find(messageQuery);
         }
 
+
+        //  Changes for Sprint #2 -- User Story 3 -- Hailey Vold
+
+
         public void AddMessage(MessageViewModel messageViewModel)
         {
             var messagesCollection = GetMessagesCollection();
@@ -50,6 +54,7 @@ namespace Sermo.Data.Mongo
             var messagesCollection = database.GetCollection<MessageViewModel>(MessagesCollection);
             return messagesCollection;
         }
+        //  Changes for Sprint #2 -- User Story 3 -- Hailey Vold
 
         private MongoCollection<RoomViewModel> GetRoomsCollection()
         {

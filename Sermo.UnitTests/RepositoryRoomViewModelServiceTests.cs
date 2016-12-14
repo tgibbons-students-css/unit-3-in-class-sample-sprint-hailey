@@ -23,6 +23,8 @@ namespace Sermo.UnitTests
             Assert.Throws<ArgumentNullException>(() => new RepositoryRoomViewModelService(null, mockMessageRepository.Object, mockRoomViewModelMapper.Object));
         }
 
+        // Changes for Sprint #1 -- User Story 1 -- Hailey Vold
+
         [Test]
         public void ConstructingWithoutMessageRepositoryThrowsArgumentNullException()
         {

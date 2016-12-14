@@ -34,7 +34,7 @@ namespace Sermo.Markdown
 
             return roomMessages;
         }
-
+        //  Changes for Sprint #2 -- User Story 1 -- Hailey Vold
         private readonly IRoomViewModelReader @delegate;
         private readonly Markdown markdown;
     }

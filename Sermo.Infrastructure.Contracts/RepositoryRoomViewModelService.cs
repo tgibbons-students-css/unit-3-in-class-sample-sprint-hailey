@@ -34,7 +34,7 @@ namespace Sermo.UI.Controllers
             }
             return allRooms;
         }
-
+        //  Changes for Sprint #1 -- User Story 2 -- Hailey Vold
         public IEnumerable<MessageViewModel> GetRoomMessages(int roomID)
         {
             var roomMessages = new List<MessageViewModel>();
@@ -46,12 +46,14 @@ namespace Sermo.UI.Controllers
             return roomMessages;
         }
 
+        //  Changes for Sprint #1 -- User Story 3 -- Hailey Vold
+
         public void CreateRoom(RoomViewModel roomViewModel)
         {
             var roomRecord = mapper.MapRoomViewModelToRoomRecord(roomViewModel);
             roomRepository.CreateRoom(roomRecord.Name);
         }
-
+        //  Changes for Sprint #1 -- User Story 2 -- Hailey Vold
         public void AddMessage(MessageViewModel messageViewModel)
         {
             var messageRecord = mapper.MapMessageViewModelToMessageRecord(messageViewModel);

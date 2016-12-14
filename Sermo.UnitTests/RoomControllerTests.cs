@@ -47,6 +47,8 @@ namespace Sermo.UnitTests
             Assert.That(result, Is.InstanceOf<ViewResult>());
         }
 
+        // Changes for Sprint #1 -- User Story 1 -- Hailey Vold
+
         [Test]
         public void GetCreateSetsViewModel()
         {
@@ -74,6 +76,7 @@ namespace Sermo.UnitTests
 
             Assert.That(isValid, Is.False);
         }
+        // Changes for Sprint #1 -- User Story 1 -- Hailey Vold
 
         [Test]
         [TestCase("Callooh! Callay! O frabjous day!")]
@@ -259,6 +262,7 @@ namespace Sermo.UnitTests
 
             Assert.That(isValid, Is.False);
         }
+        //  Changes for Sprint #2 -- User Story 2 -- Hailey Vold
 
         [Test]
         [TestCase(null)]

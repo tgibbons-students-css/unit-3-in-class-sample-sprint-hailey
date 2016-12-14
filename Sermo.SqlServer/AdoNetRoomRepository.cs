@@ -45,7 +45,7 @@ namespace Sermo.Data.AdoNet
                 }
             }
         }
-
+       //  Changes for Sprint #1 -- User Story 1 -- Hailey Vold
         public IEnumerable<RoomRecord> GetAllRooms()
         {
             var allRooms = new List<RoomRecord>();

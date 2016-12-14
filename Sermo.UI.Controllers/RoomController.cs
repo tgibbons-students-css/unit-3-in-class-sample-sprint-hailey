@@ -56,6 +56,8 @@ namespace Sermo.UI.Controllers
 
             return result;
         }
+        //  Changes for Sprint #1 -- User Story 2 -- Hailey Vold
+
 
         [HttpGet]
         public ActionResult Messages(int roomID)
@@ -83,7 +85,7 @@ namespace Sermo.UI.Controllers
 
             return result;
         }
-
+        //  Changes for Sprint #1 -- User Story 4 -- Hailey Vold
         private readonly IRoomViewModelReader reader;
         private readonly IRoomViewModelWriter writer;
     }

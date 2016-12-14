@@ -54,7 +54,7 @@ namespace Sermo.UnitTests
             };
             mockRoomViewModelReader.Setup(reader => reader.GetRoomMessages(It.IsAny<int>())).Returns(roomMessages);
         }
-
+        //  Changes for Sprint #2 -- User Story 1 -- Hailey Vold
         private MessageViewModel message1;
         private Mock<IRoomViewModelReader> mockRoomViewModelReader;
         private Markdown markdown;
